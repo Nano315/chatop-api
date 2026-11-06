@@ -36,6 +36,9 @@ public class AuthController {
 		this.userService = userService;
 	}
 
+	/**
+	 * Creates an account and returns a JWT for it.
+	 */
 	@PostMapping("/register")
 	@SecurityRequirements
 	@Operation(summary = "Create an account", description = "Public route. Returns a JWT for the new user.")
@@ -46,6 +49,9 @@ public class AuthController {
 		return new TokenResponse(authService.register(request));
 	}
 
+	/**
+	 * Returns a JWT if the email and password match an existing account.
+	 */
 	@PostMapping("/login")
 	@SecurityRequirements
 	@Operation(summary = "Log in", description = "Public route. Returns a JWT if the email and password are correct.")
@@ -57,7 +63,7 @@ public class AuthController {
 	}
 
 	/**
-	 * The authenticated user is the subject (email) of the JWT sent in the Authorization header.
+	 * Returns the authenticated user, i.e. the subject (email) of the JWT sent in the Authorization header.
 	 */
 	@GetMapping("/me")
 	@Operation(summary = "Get the authenticated user")

@@ -28,6 +28,9 @@ public class MessageController {
 		this.messageService = messageService;
 	}
 
+	/**
+	 * Saves a message sent to the owner of a rental.
+	 */
 	@PostMapping
 	@Operation(summary = "Send a message to the owner of a rental")
 	@ApiResponse(responseCode = "200", description = "Message sent")

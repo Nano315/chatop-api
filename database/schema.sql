@@ -1,5 +1,7 @@
 -- ChâTop database schema (from the starter repository: ressources/sql/script.sql)
--- Run it once on chatop_db, with an account allowed to create tables (e.g. root).
+-- Run it once, after creating chatop_db, with an account allowed to create tables (e.g. root).
+
+USE chatop_db;
 
 CREATE TABLE `USERS` (
   `id` integer PRIMARY KEY AUTO_INCREMENT,

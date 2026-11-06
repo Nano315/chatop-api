@@ -27,6 +27,9 @@ public class UserController {
 		this.userService = userService;
 	}
 
+	/**
+	 * Returns the public profile of a user, e.g. a rental owner (404 if it does not exist).
+	 */
 	@GetMapping("/{id}")
 	@Operation(summary = "Get a user")
 	@ApiResponse(responseCode = "200", description = "The user")

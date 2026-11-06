@@ -41,6 +41,9 @@ public class RentalController {
 		this.rentalService = rentalService;
 	}
 
+	/**
+	 * Returns all the rentals.
+	 */
 	@GetMapping
 	@Operation(summary = "List all rentals")
 	@ApiResponse(responseCode = "200", description = "All rentals")
@@ -49,6 +52,9 @@ public class RentalController {
 		return new RentalsResponse(rentalService.getAll());
 	}
 
+	/**
+	 * Returns one rental (404 if it does not exist).
+	 */
 	@GetMapping("/{id}")
 	@Operation(summary = "Get a rental")
 	@ApiResponse(responseCode = "200", description = "The rental")
@@ -59,6 +65,9 @@ public class RentalController {
 		return rentalService.getById(id);
 	}
 
+	/**
+	 * Creates a rental from the multipart form, owned by the authenticated user, and saves its picture.
+	 */
 	@PostMapping(consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
 	@Operation(summary = "Create a rental", description = "The authenticated user becomes the owner of the rental.")
 	// springdoc does not merge the picture file with the form fields: the multipart body is described explicitly
@@ -81,6 +90,9 @@ public class RentalController {
 		return new MessageResponse("Rental created !");
 	}
 
+	/**
+	 * Updates the text fields of a rental. Only its owner can do it (403 otherwise).
+	 */
 	@PutMapping(path = "/{id}", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
 	@Operation(summary = "Update a rental", description = "Only the owner of the rental can update it. The picture is not changed.")
 	@ApiResponse(responseCode = "200", description = "Rental updated")
